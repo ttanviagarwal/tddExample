@@ -1,0 +1,7 @@
+1. Password Buisneess Rules
+   BR#1) Minimum 6 letters
+   BR#2) Atleast 1 alphabet
+   BR#3) Atleast 1 number
+   BR#4) Atleast 1 sp character
+
+2. Username is email.

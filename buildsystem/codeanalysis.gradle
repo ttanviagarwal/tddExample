@@ -1,0 +1,105 @@
+/**
+ * This file would add the static analyzer tools such as PMD, Findbugs and Checkstyle and lint.
+ * The separate reports would be generated under the reports folder after each task.
+ * For analysing the code at any given time run the command './gradlew analyseCode'
+ */
+
+//---------------------------------- Constants -------------------------------
+
+def reportsSrcDir               = "$project.rootDir/reports/"
+def sourceDir                   = "src/main/java"
+def classesDir                  = "build/intermediates/classes/debug/"
+def filesIncludedInCheckstyle   = "**/*.java"
+def filesExcludedInCheckStyle   = "**/build/**"
+
+//----------------------------------- Configuration files -------------------------
+
+def findBugExcludeFile      = "$project.rootDir/config/findbugs_exclude.xml"
+def checkStyleConfigFile    = "$project.rootDir/config/checkstyle.xml"
+
+//---------------------------------- PMD setup --------------------------------
+
+apply plugin: 'pmd'
+
+pmd {
+    ignoreFailures      = true
+    reportsDir          = file(reportsSrcDir)
+}
+
+task pmd (type: Pmd) {
+    group       'verification'
+    description 'Generate PMD reports after running debug builds'
+
+    ruleSets            = ["java-basic", "java-braces", "java-strings", "java-design", "java-unusedcode"]
+    source              = fileTree(sourceDir)
+
+    reports {
+        xml.enabled     = true
+        html.enabled    = true
+    }
+}
+
+//---------------------------------- Findbugs setup ----------------------------
+
+apply plugin: 'findbugs'
+
+findbugs {
+    ignoreFailures      = true
+    reportsDir          = file(reportsSrcDir)
+    reportLevel         = "medium"
+    effort              = "max"
+}
+
+task findbugs (type: FindBugs) {
+    group 'verification'
+    description 'Generates FindBugs reports after running debug builds'
+
+    classes             = fileTree(classesDir)
+    source              = fileTree(sourceDir)
+    classpath           = files()
+
+    effort              = "max"
+
+    excludeFilter       = file(findBugExcludeFile)
+
+    reports {
+        xml.enabled     = false
+        html.enabled    = true
+    }
+}
+
+//---------------------------------- Checkstyle setup ---------------------------
+
+apply plugin: 'checkstyle'
+
+checkstyle {
+    ignoreFailures      = true
+    reportsDir          = file(reportsSrcDir)
+}
+
+task checkstyle (type: Checkstyle) {
+    group 'verification'
+    description 'Generates Checkstyle reports after running debug builds'
+
+    configFile  file(checkStyleConfigFile)
+    source      sourceDir
+    include     filesIncludedInCheckstyle
+    exclude     filesExcludedInCheckStyle
+
+    classpath   = files()
+
+    reports {
+        xml.enabled     = true
+    }
+}
+
+//---------------------------------- Create a code analysing task ------------------
+
+task analyseCode(dependsOn: "assembleDebug") {
+    doLast{
+        project.tasks.getByName("pmd").execute()
+        project.tasks.getByName("findbugs").execute()
+        project.tasks.getByName("checkstyle").execute()
+        project.tasks.getByName("lint").execute()
+    }
+}

@@ -1,0 +1,29 @@
+/**
+ * This is responsible for generating the code coverage reports for Jenkins CI
+ */
+
+//-------------------------------- Coverage Reports setup ---------------------------------
+apply plugin: "jacoco"
+
+jacoco {
+    toolVersion = "0.7.5.201505241946"
+}
+
+def coverageSourceDirs = ['src/main/java']
+
+task jacocoTestReport(type: JacocoReport, dependsOn: "testDebug") {
+    group = "Reporting"
+
+    description = "Generate Jacoco coverage reports after running tests."
+
+    reports {
+        xml.enabled = true
+        html.enabled = true
+    }
+
+    classDirectories = fileTree(dir: './build/intermediates/classes/debug')
+            .matching { exclude '**/R.class', '**/BuildConfig.class' }
+
+    sourceDirectories = files(coverageSourceDirs)
+    executionData = files('build/jacoco/testDebugUnitTest.exec')
+}

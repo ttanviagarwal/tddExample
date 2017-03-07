@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">AndroidTDDExample</string>
+    <string name="email_not_exist">email_not_exist</string>
+    <string name="some_error_occurred">Some Error occurred</string>
+    <string name="unable_to_receive_data">unable_to_receive_data</string>
+    <string name="network_error_occurred">network_error_occurred</string>
+</resources>

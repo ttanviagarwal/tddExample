@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="some_error_occurred">حدث خطأ</string>
+    <string name="network_error_occurred">لايوجد إنترنيت. الرجاء المحاولة لاحقاً.</string>
+    <string name="email_already_exist"> الايميل الحالي مستخدم من قبل</string>
+    <string name="email_not_verified">يرجى التحقق من صلاحية الايميل.</string>
+    <string name="something_went_wrong">حدث خطأ، يرجى المحاولة لاحقاً</string>
+
+    <string name="email_not_exist">يرجى التحقق من صلاحية الايميل</string>
+    <string name="email_or_password_is_not_correct">الايميل أو كلمة المرور غير صحيحين</string>
+    <string name="user_is_blocked_by_admin">تم حجب هذا الحساب من قبل المشرف</string>
+    <string name="please_provide_complete_information">يرجى إتمام المعلومات الأساسية</string>
+    <string name="no_record_found">لايوجد سجلات</string>
+    <string name="user_blocked_by_admin">تم حجب حساب المستخدم من قبل المشرف</string>
+    <string name="unable_to_receive_data">لم يتم استلام المعلومات بشكل كامل</string>
+
+</resources>
+
+

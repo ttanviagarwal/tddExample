@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="unable_to_receive_data">Unable to receive data</string>
+    <string name="some_error_occurred">Some error occurred</string>
+    <string name="network_error_occurred">Network error. Please check your internet connection.</string>
+    <string name="email_already_exist">Email already exist.</string>
+    <string name="email_not_verified">Email not verified.</string>
+    <string name="something_went_wrong">Something went wrong. Please try again later.</string>
+
+    <string name="email_not_exist">Email not exist.</string>
+    <string name="email_or_password_is_not_correct">Email or password is not correct.</string>
+    <string name="user_is_blocked_by_admin">User is blocked by admin.</string>
+    <string name="please_provide_complete_information">Please provide complete information.</string>
+    <string name="no_record_found">No Record Found</string>
+    <string name="user_blocked_by_admin">User is blocked by admin</string>
+</resources>
