@@ -1,0 +1,30 @@
+1. Login Accepts email address as Username.
+2. Login accepts alphanumeric password. ( min 6 letters, 1 alphabet, 1 number, 1 special character atleast).
+3. User would be able to press submit only when he has entered a valid username and a valid password.
+4. The submit button will validate the form fields.
+5. Keyboard interaction: There should be next button on the username form fields, which shall take focus on the password field.
+6. Keyboard interaction: There should be a done button on the password field, which shall do the same functionality as the done button.
+7. Keyboard intercation: Shown when the filed is focus.
+8. Keyboard interaction: Hide when the submit/done button is pressed.
+8. If the form fields are valid then submit would submit the form fields as per the Web API acceptance document.
+9. The User shall be shown an appropriate loader during the time when the API call is in progress.
+10. If the server verifies successfully the loginServiceBusinessLogic creds:
+    (a) The loader shall be removed.
+    (b) The valid user token shall be saved.
+    (c) once (a) is done, The user shall be navigated to the home screen.
+11.If the server throws an error during creds verification:
+    (a) The loader shall be removed.
+    (b) The appropriate error message.
+    (c) The appropriate action would follow for each error case (refer the API doc).
+12.If the user press the forgot password link he shall be taken to the Forgot password screen.
+13.If the user press the Sign up button user shall be taken to the Sign up screen.
+
+UI:
+
+
+
+API:
+
+
+
+
