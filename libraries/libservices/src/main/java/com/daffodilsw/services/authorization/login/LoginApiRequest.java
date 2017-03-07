@@ -12,16 +12,27 @@ import okhttp3.HttpUrl;
 import retrofit2.Call;
 
 public class LoginApiRequest implements APIRequest {
+    private HttpUrl mBaseUrl;
+
+    public LoginApiRequest() {
+    }
+
+    public LoginApiRequest(HttpUrl baseUrl) {
+        this.mBaseUrl = baseUrl;
+    }
 
     private Call<ResLogin> mLoginAPICall;
 
-    public void makeRequest(ReqLogin reqLogin, ErrorMessageResolver errorMessageResolver,
-                            ResponseCallback<ResLogin> responseCallback, HttpUrl baseUrl) {
-
-        AuthorizationService authorizationService = ServiceManager.get().createService(AuthorizationService.class, baseUrl);
-        mLoginAPICall = authorizationService.performLogin(reqLogin.getRequestBody());
+    public void makeRequest(String email, String password, ErrorMessageResolver errorMessageResolver,
+                            ResponseCallback<ResLogin> responseCallback) {
+        AuthorizationService authorizationService;
+        if (this.mBaseUrl == null) {
+            authorizationService = ServiceManager.get().createService(AuthorizationService.class);
+        } else {
+            authorizationService = ServiceManager.get().createService(AuthorizationService.class, this.mBaseUrl);
+        }
+        mLoginAPICall = authorizationService.performLogin(email, password);
         mLoginAPICall.enqueue(new ResponseWrapper<>(errorMessageResolver, responseCallback));
-
     }
     
     @Override
@@ -31,6 +42,7 @@ public class LoginApiRequest implements APIRequest {
             mLoginAPICall = null;
         }
     }
+
 
     @Override
     public boolean isInProgress() {

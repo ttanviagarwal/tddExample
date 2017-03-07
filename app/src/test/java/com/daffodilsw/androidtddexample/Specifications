@@ -8,7 +8,7 @@
 8. Keyboard interaction: Hide when the submit/done button is pressed.
 8. If the form fields are valid then submit would submit the form fields as per the Web API acceptance document.
 9. The User shall be shown an appropriate loader during the time when the API call is in progress.
-10. If the server verifies successfully the login creds:
+10. If the server verifies successfully the loginServiceBusinessLogic creds:
     (a) The loader shall be removed.
     (b) The valid user token shall be saved.
     (c) once (a) is done, The user shall be navigated to the home screen.

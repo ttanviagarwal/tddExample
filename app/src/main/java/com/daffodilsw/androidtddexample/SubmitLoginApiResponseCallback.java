@@ -3,6 +3,7 @@ package com.daffodilsw.androidtddexample;
 import android.os.Bundle;
 
 
+import com.daffodilsw.androidtddexample.login.bl.ISubmitLoginRequestApiResponseReceiver;
 import com.daffodilsw.api.ErrorResponse;
 import com.daffodilsw.api.ResponseCallback;
 import com.daffodilsw.services.authorization.login.ResLogin;
@@ -10,7 +11,7 @@ import com.daffodilsw.services.authorization.login.ResLogin;
 public class SubmitLoginApiResponseCallback implements ResponseCallback<ResLogin> {
     ISubmitLoginRequestApiResponseReceiver mResponseReceiver;
 
-    SubmitLoginApiResponseCallback(ISubmitLoginRequestApiResponseReceiver submitLoginRequestApiResponseReceiver) {
+    public SubmitLoginApiResponseCallback(ISubmitLoginRequestApiResponseReceiver submitLoginRequestApiResponseReceiver) {
         this.mResponseReceiver = submitLoginRequestApiResponseReceiver;
     }
 

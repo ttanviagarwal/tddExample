@@ -1,4 +1,4 @@
-package com.daffodilsw.androidtddexample;
+package com.daffodilsw.androidtddexample.login.bl;
 
 
 import com.daffodilsw.api.ErrorResponse;
